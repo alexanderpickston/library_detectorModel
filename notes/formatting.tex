@@ -1,0 +1,112 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{mathtools}	
+\usepackage{amssymb}
+\usepackage{amsmath}		
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{amsthm}
+\usepackage{psfrag}
+\usepackage{ifsym}
+\usepackage{dsfont}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{multirow} 
+\usepackage{lipsum}
+\usepackage{float}
+\usepackage[separate-uncertainty=true]{siunitx}
+\usepackage{setspace}
+\usepackage[sort&compress]{natbib}
+\usepackage[dvipsnames]{xcolor}
+
+
+\usepackage{silence}
+\WarningFilter{revtex4-1}{Repair the float}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+
+\usepackage{hyperref}
+\definecolor{refColour}{RGB}{31, 150, 139}
+\definecolor{citeColour}{RGB}{68, 1, 84}
+\definecolor{extraColour}{RGB}{115,208,85}
+\hypersetup{colorlinks=true,linkcolor=refColour,citecolor=citeColour}
+
+\usepackage{titlesec}
+\titleformat*{\subsection}{\normalfont\centering}
+\titleformat*{\section}{\normalfont\centering\large}
+
+%%%%%%%%%%%%%%%%%%%
+%%% newcommands %%%
+%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\oos}{\omega_s}
+\newcommand{\ooi}{\omega_i}
+\newcommand{\oop}{\omega_p}
+\newcommand{\ooa}{\left( \oos,\ooi\right)}
+\newcommand{\Oos}{\Omega_s}
+\newcommand{\Ooi}{\Omega_i}
+\newcommand{\Oop}{\Omega_p}
+\newcommand{\Ooa}{\left( \Oos,\Ooi\right)}
+\newcommand{\dg}{^{\dagger}}
+
+\newcommand*\hgzero{\includegraphics[height=7pt]{hg0.pdf}}
+\newcommand*\hgone{\includegraphics[height=7pt]{hg1.pdf}}
+
+\renewcommand{\figurename}{Figure}
+\renewcommand{\tablename}{Table}
+
+\newcommand{\ketbra}[1]{ | #1 \rangle\!\langle #1 |}
+\newcommand{\iketbra}[1]{ | #1 \rangle\!_{_i}\langle #1 |_{_i}}
+\newcommand{\sketbra}[1]{ | #1 \rangle\!_{_s}\langle #1 |_{_s}}
+
+\newcommand{\der}[2] {\frac{d #1}{d #2}}
+\newcommand{\dersq}[2] {\frac{d^2#1}{d #2^2}}
+\newcommand{\parder}[2] {\frac{\partial #1}{\partial #2}}
+\newcommand{\parderst}[2] {\frac{\partial #1}{\partial #2}}
+\newcommand{\pardersq}[2] {\frac{\partial^2}{\partial #2^2} #1}
+\newcommand{\pardersqst}[2] {\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pibar} [0] {\: \: \makebox[0pt]{$\pi$} \raisebox{-0.8ex}{$\bar{}$}}
+\newcommand{\inbg} [0] {\: \: \makebox[0pt]{!}\hspace{-0.5 ex}{?}}
+\newcommand{\ldiagpol} [0] {\: \: \makebox[0pt]{$\nwarrow$}\hspace{-1.1 ex}{\searrow}}
+\newcommand{\rdiagpol} [0] {\: \: \makebox[0pt]{$\nearrow$}\hspace{-1.2 ex}{\swarrow}}
+\newcommand{\tb} [1] {\textbf{#1}}
+\newcommand{\mr} [1] {\mathrm{#1}}
+\newcommand{\vs} [2] {\textbf{#1}_{\mathrm{#2}}}
+\newcommand{\vc} [2] {\textbf{#1}_{#2}}
+\newcommand{\cat} [3] {\ket{#1}{#3}{#2}\ket{{-}#1}{#3}}
+\newcommand{\sqo} [1] {\hat{S}_r\ket{1}{#1}}
+\newcommand{\sqot} [2] {\hat{S}_{#2}\ket{1}{#1}}
+\newcommand{\sqov}[2] {\hat{S}_{#2}\ket{0}{#1}}
+\newcommand{\ii} {\textbf{i}}
+\newcommand{\ve} {\varepsilon}
+\newcommand{\Tr} {\operatorname{Tr}}
+
+\newcommand{\expec}[1]{\left\langle #1 \right\rangle}
+\newcommand{\one}{\leavevmode\hbox{\small1\normalsize\kern-.33em1}}
+\newcommand{\sandwich}[3]{\mbox{$ \langle #1 | #2 | #3 \rangle $}}
+
+\newcommand{\dket}[1]{\mbox{$\left|\left.#1\right\rangle\right\rangle$}}
+\newcommand{\dbra}[1]{\mbox{$\left\langle\left\langle #1\right.\right|$}}
+\newcommand{\dbradket}[2]{\mbox{$\langle\langle #1|#2\rangle\rangle$}}
+\newcommand{\dketdbra}[2]{\mbox{$|#1\rangle\rangle\langle\langle #2|$}}
+
+\newcommand{\dbraket}[2]{\mbox{$\langle\langle #1|#2\rangle$}}
+\newcommand{\dketbra}[2]{\mbox{$|#1\rangle\rangle\langle #2|$}}
+\newcommand{\bradket}[2]{\mbox{$\langle\ #1|#2\rangle\rangle$}}
+\newcommand{\ketdbra}[2]{\mbox{$|#1\rangle\langle\langle #2|$}}
+
+\newcommand{\id}{\mathds{1}}
+\newcommand{\Ident} {\mathds 1}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\mm}{{\cal M}}
+
+\newcommand{\changed}[1]{\textcolor{red}{ #1}}
+\newcommand{\todo}[1]{\textbf{\textcolor{blue}{ #1}}}
+\newcommand{\reply}[1]{\textcolor{magenta}{ #1}}
+\newcommand{\new}[1]{\textcolor{cyan}{ #1}}
+\newcommand{\change}[1]{\textcolor{blue}{ #1}}

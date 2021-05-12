@@ -1,0 +1,52 @@
+% \section*{Computing $\gamma$ Parameter} 
+
+% In order to gain knowledge of the squeezing parameter we need singles and coincidences of the non-linear source as a function of the pump power. The probability that the non-linear photon source produces n photons is given by,
+
+% \begin{align}\label{eq:geoDist}
+%     (1 - P \tau ) (P \tau )^n = (1 - \gamma^{2})(\gamma^2)^n.
+% \end{align}
+
+% Where $\tau$ defines the interaction within the media given a pump power of $P$. Expressed with respect to $\gamma$, $\gamma = \sqrt{p \tau}$. The $\gamma$ parameters importance is evident when you express the down-conversion process as a series expansion of photon number terms in signal and idler modes:
+
+% \begin{align}
+%     \ket{\psi}_{\text{\tiny{PDC}}} &= \sqrt{1 - \gamma^2} \sum^{\infty}_{n=0} \gamma^n \ket{n,n} \\
+%      &= \sqrt{1-\gamma^2} \hspace{.5em} (\ket{0,0} + \gamma \ket{1,1} + \gamma^2\ket{2,2} + \hspace{.5em}  ... \hspace{.5em} ).
+% \end{align}
+
+% The parameter $\gamma$ now dictates the probability of photon pair emission, i.e $\gamma^n(1-\gamma^2)$ is the probability of n-pairs of photons being generated. Typically we seek $n=1$ from the same pump pulse in two separate crystals. However, due to probabilistic nature of these photon sources, having two independent sources producing $n=1$ pairs of photons is the equivalent probabilistically as having a single source producing $n=2$ pairs. We use a geometric distribution \alex{note to self - run all analysis again with poissonian dist} to represent photon number statistics from pulsed source as we stated in Equation (\ref{eq:geoDist}), where the probability of n-fold emission is \cite{jin2015efficient},
+
+% \begin{equation}
+%     p_{\text{em}}(P,n,\tau) = (1 - P \tau)(P \tau)^n 
+% \end{equation}
+
+% We deploy SNSPD's to detect the arrival of a photon. These are non-number resolving detectors which simply click when $n>0$ photons arrive. If we are considering that there are n photons generated, we may only be capable of detecting k out of n photons due to the operational nature of the SNSPD's. The detection probability of detecting at least k photons given n photons in a single mode is therefore \alex{reference in notebook}:
+
+% \begin{equation}
+%   p_{\text{det}}(\eta,n,k) = 1 - \sum_{m=0}^{k-1} \binom{n}{k} \eta^m (1-\eta)^{n-m}
+% \end{equation}
+
+% An additional function which adds extra accuracy in representing the final photon number statistics of our system is the probability that the detectors, which have an associated dead-time after a detection event, are ready to detect photons again. The probability that a detector is ready is the probability that firstly, photons are emitted from the source combined secondly, with the probability that within a time window $t$--equivalent to the dead-time associated with that detector--no photon was detected. This is written as, 
+
+% \begin{equation}
+%     p_{\text{ready}}(P,R,t,\tau,\eta_1,\eta_2) = \big[ \sum^{\infty}_{i=0} p_{\text{em}}(P,i,\tau) \cdot p_{\text{det}}(1-\eta_1,i,i) \cdot p_{\text{det}}(1-\eta_2,i,i) \big]^{\lfloor R\times t \rfloor},
+% \end{equation}
+
+% where $R$ is the repetition rate of our pump in Hz, $t$ is the detectors dead-time, and the exponent is wrapped in a floor function which rounds to the nearest integer less or equivalent to the value the function is being applied to \alex{peter thesis citation}. With these three functions we can now begin to build a model which approximates the photon rates we expect to see post detection. For the rates of single photon detection the function reads as,
+
+% \begin{equation}
+%     R_s(P,R,t,\tau,\eta) = R \Big(\big[ \sum^{\infty}_{j=1}  p_{\text{em}}(P,j,\tau) \cdot p_{\text{det}}(\eta,j,1) \big] p_{\text{ready}}(P,R,t,\tau,\eta,0) \Big).
+% \end{equation}
+
+% For multi-photon experiments we are interested in rates of coincidences from $N$-photon sources, the probability of such events are,
+
+% \begin{equation}
+%     R_{cc}(P,R,t,\tau,\eta_{m_1},\eta_{m_2},N) = R \cdot \prod_{m=1}^{N} \Big(p_{\text{em}}(P,j,\tau_m) \cdot p_{\text{det}}(\eta_{m_1},1,1) \cdot p_{\text{det}}(\eta_{m_2},1,1) \cdot  p_{\text{ready}}(P,R,t,\tau_m,\eta_{m_1},\eta_{m_2}) \Big).
+% \end{equation}
+
+% Using these functions we can extract the parameters $\tau$, $\eta_1$ and $\eta_2$ for each source. By minimising the following:
+
+% \begin{equation}
+%     \mid \text{Singles}_1(P) - R_s(P,t,\tau,\eta_1) \mid + \mid \text{Singles}_2(P) - R_s(P,t,\tau,\eta_2) \mid + \mid \text{Coincidences}(P) - R_{cc}(P,t,\tau,\eta_1,\eta_2) \mid,
+% \end{equation}
+
+% given that we know the single and coincidence rates as a function of power, we know the repetition rate and detector dead-times we can obtain numerital values for $\tau$, $\eta_1$ and $\eta_2$. Figure
